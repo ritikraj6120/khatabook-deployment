@@ -39,7 +39,6 @@
 		"eject": "react-scripts eject",
 		"both": "concurrently \"npm run start\" \"nodemon backend/index.js\""
 	},
-	"proxy": "http://localhost:5000",
 	"eslintConfig": {
 		"extends": [
 			"react-app",
