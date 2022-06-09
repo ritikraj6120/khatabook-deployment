@@ -1,0 +1,21 @@
+.sticky-btn {
+	background-color: rgb(194, 11, 96);
+    position: fixed;
+    bottom: 5rem;
+    right: 10rem;
+    width: 5vw;
+    height: 5vw;
+		min-width: 3rem;
+		min-height: 3rem;
+    border-radius: 10vw;
+  }
+
+  div.fixed {
+	margin: auto;
+	position: fixed;
+	bottom: 2vh;
+	right: 0;
+	width: 50%;
+	/* border: 3px solid #f81f97; */
+  }
+ 
