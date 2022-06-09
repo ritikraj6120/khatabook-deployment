@@ -37,20 +37,10 @@ router.post('/signup', [
 			password: secPass,
 			email: req.body.email,
 		});
-		console.log(user);
-
-		const data = {
-			user: {
-				id: user.id
-			}
-		}
-		const authtoken = jwt.sign(data, JWT_SECRET);
-
-
 		// res.json(user)
 		isAuthenticated = true;
 
-		res.status(200).json({ isAuthenticated, authtoken, isadmin: user.isadmin })
+		return res.status(200).json({ isAuthenticated })
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).send("Internal Server Error");
