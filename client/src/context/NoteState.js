@@ -1,13 +1,16 @@
 import NoteContext from "./noteContext";
-import UserContext from "./UserContext";
-import { useState, useContext } from "react";
+import { useDispatch  } from 'react-redux';
+import { handleLogout } from '../actions/userAction'
+import { useState } from "react";
+import {useHistory}  from "react-router-dom"
 import { notifySuccess, notifyError, notifyWarning, notifyUnAuthorized } from "../alert.js"
 const NoteState = (props) => {
-	const host = "https://khatabook-app.herokuapp.com"
+	let history = useHistory();
+	const dispatch = useDispatch();
+	// const host = "https://khatabook-app.herokuapp.com"
+	const host = "https://khatabook-app6120.herokuapp.com"
 	const notesInitial = []
 	const [notes, setNotes] = useState(notesInitial)
-
-	const { handleLogout } = useContext(UserContext)
 
 	// Get all Notes
 	const getNotes = async () => {
@@ -21,7 +24,7 @@ const NoteState = (props) => {
 		});
 		if (response.status === 401) {
 			notifyUnAuthorized("Unauthorized User Access");
-			handleLogout()
+			dispatch(handleLogout(history));
 		}
 		else if (response.status === 200) {
 			const json = await response.json()
@@ -44,7 +47,7 @@ const NoteState = (props) => {
 		});
 		if (response.status === 401) {
 			notifyUnAuthorized("Unauthorized User Access");
-			handleLogout()
+			dispatch(handleLogout(history));
 		}
 		else if (response.status === 400) {
 			notifyWarning("Invalid Details for Notes")
@@ -71,7 +74,7 @@ const NoteState = (props) => {
 			});
 			if (response.status === 401) {
 				notifyUnAuthorized("Unauthorized User Access");
-				handleLogout()
+				dispatch(handleLogout(history));
 			}
 			else if (response.status === 404) {
 				notifyWarning(" Note to be deleted Not Found");
@@ -108,7 +111,7 @@ const NoteState = (props) => {
 		}
 		else if (response.status === 401) {
 			notifyUnAuthorized("Unauthorized User Access");
-			handleLogout()
+			dispatch(handleLogout(history));
 		}
 		else if (response.status === 200) {
 			let newNotes = notes;

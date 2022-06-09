@@ -51,7 +51,7 @@ import { notifyError, notifySuccess, notifyUnAuthorized, notifyWarning } from '.
 
 
 // const host = "https://khatabook-app.herokuapp.com"
-const host = "http://localhost:5000"
+const host = "https://khatabook-app6120.herokuapp.com"
 
 export const getCustomers = () => async (dispatch) => {
 	try {
