@@ -33,7 +33,7 @@ export const login = (user, history) => async (dispatch) => {
 			body: JSON.stringify(user)
 		});
 		const json = await response.json()
-		if (json.success) {
+		if (response.status === 200) {
 			// Save the auth token and redirect
 			localStorage.setItem('token', json.authtoken);
 			dispatch({
@@ -43,19 +43,27 @@ export const login = (user, history) => async (dispatch) => {
 			notifySuccess("Successfully logged in")
 			history.push("/customers");
 		}
-		else {
-			let x = json.error[0];
-			notifyError(x.msg);
+		else if (response.status === 400) {
+			let x = json.error;
+			notifyError(x);
 			dispatch({
 				type: USER_LOGIN_FAIL,
-				payload: x.msg
+				payload: x
 			});
+		}
+		else {
+			dispatch({
+				type: USER_LOGIN_FAIL,
+				payload: "Logging Failed. Please try again"
+			});
+			notifyError("Logging Failed. Please try again");
 		}
 	} catch (error) {
 		dispatch({
 			type: USER_LOGIN_FAIL,
-			payload: "please login again"
+			payload: "Logging Failed. Please try again"
 		});
+		notifyError("Logging Failed. Please try again");
 	}
 };
 
@@ -81,20 +89,34 @@ export const signup = (user, history) => async (dispatch) => {
 		});
 		const json = await response.json()
 
-		if (json.isAuthenticated) {
+		if (response.status === 200) {
 			dispatch({
 				type: USER_REGISTER_SUCCESS,
 			});
 			notifySuccess("Account Created Successfully")
 			history.push("/login");
 		}
-		else {
+		else if (response.status === 400) {
 			let x = json.error[0];
 			dispatch({
 				type: USER_REGISTER_FAIL,
 				payload: x.msg
 			});
 			notifyError(x.msg);
+		}
+		else if (response.status === 409) {
+			dispatch({
+				type: USER_REGISTER_FAIL,
+				payload: "Sorry a user with this e-mail address already exists"
+			});
+			notifyError("Sorry a user with this e-mail address already exists");
+		}
+		else {
+			dispatch({
+				type: USER_REGISTER_FAIL,
+				payload: "User Signup fail.please try again"
+			});
+			notifyError("User Signup fail.please try again");
 		}
 	} catch (error) {
 		dispatch({
