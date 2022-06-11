@@ -249,7 +249,7 @@ router.put('/updateSupplierTransaction/:id', fetchuser, async (req, res) => {
 		// console.log(req.body)
 		if (purchase_singleSupplier) { newSupplierTransaction.purchase_singleSupplier = purchase_singleSupplier };
 		if (payment_singleSupplier) { newSupplierTransaction.payment_singleSupplier = payment_singleSupplier };
-		if (billdetails) { newSupplierTransaction.billdetails = billdetails };
+		if (billdetails) { newSupplierTransaction.billDetails = billdetails };
 		if (billNo) { newSupplierTransaction.billNo = billNo };
 		if (date) { newSupplierTransaction.date = date };
 		// console.log("hi")

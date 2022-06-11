@@ -26,6 +26,23 @@ https://khatabook-app6120.herokuapp.com/
   1. Users can add,delete and edit their notes.
   2. Users can mark notes as important/Completed.
 
+# Api Section Documentation
+### Consists of 4 sections/collections
+  <ol>
+    <li><b>Authorization Collection Docs</b>
+      <ul><li>https://documenter.getpostman.com/view/16378731/Uz5Nit5e</li></ul>
+  </li>
+    <li><b>Customer Collection Docs</b> 
+			<ul><li>https://documenter.getpostman.com/view/16378731/Uz5NjCxK</li></ul>
+		</li>
+    <li><b>Supplier Collection Docs</b> 
+		<ul><li>https://documenter.getpostman.com/view/16378731/Uz5NjCxM</li></ul>
+		</li>
+    <li><b>Notes Collection Docs </b> 
+		<ul><li>https://documenter.getpostman.com/view/16378731/Uz5NjCxN</li></ul>
+		</li>
+  </ol>
+
 # Run Locally
 Clone the project
 ```
